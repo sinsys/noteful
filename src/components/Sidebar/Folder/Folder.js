@@ -6,9 +6,7 @@ export default class Folder extends Component {
 	render() {
 	  return (
 	    <div className="Folder">
-	    	<p>
-	    		Folder
-	    	</p>
+	    	Folder
 	    </div>
 	  );		
 	}
