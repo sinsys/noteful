@@ -4,7 +4,7 @@ import './Main.css';
 import Note from './Note/Note';
 import AddNote from './AddNote/AddNote';
 
-export default class Main extends Component {
+class Main extends Component {
 
 	render() {
 	  return (
@@ -12,13 +12,22 @@ export default class Main extends Component {
 	    	<h2>
 	    		Main
 	    	</h2>
-	    	<Note />
-	    	<Note />
-	    	<Note />
-	    	<Note />
+	    	{this.props.notes
+	    		.map(note => (
+	    			<Note
+	    				{...note}
+	    			/>
+	    		))
+	    	}
 	    	<AddNote />
 	    </div>
 	  );		
 	}
 
 }
+
+Main.defaultProps = {
+	notes: []
+}
+
+export default Main;
