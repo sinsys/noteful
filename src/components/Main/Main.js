@@ -13,6 +13,9 @@ export default class Main extends Component {
 	    		Main
 	    	</h2>
 	    	<Note />
+	    	<Note />
+	    	<Note />
+	    	<Note />
 	    	<AddNote />
 	    </div>
 	  );		

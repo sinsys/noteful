@@ -6,12 +6,23 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Main from './components/Main/Main';
 
 import './App.css';
+import STORE from './STORE.js';
 
 export default class App extends Component {
   
   state = {
+    folders: [],
+    notes: []
+  };
 
-  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        STORE
+      });
+    });
+  };
 
   render() {
     return (
@@ -35,6 +46,6 @@ export default class App extends Component {
         />
       </div>
     );
-  }
+  };
 
-}
+};
