@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import './AddFolder.css';
 
 export default class AddFolder extends Component {
 
 	render() {
 	  return (
-	    <button
-	    	className="AddFolder"
-	    >
-	    	Add Folder
-	    </button>
+	  	<Link
+	  		to={'/add-folder'}
+	  	>
+		    <button
+		    	className="AddFolder"
+		    >
+		    	Add Folder
+		    </button>
+	    </Link>
 	  );		
 	}
 

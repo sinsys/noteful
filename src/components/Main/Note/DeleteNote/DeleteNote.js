@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import './DeleteNote.css';
 
 export default class DeleteNote extends Component {
 
 	render() {
 	  return (
-	    <button
-				className="DeleteNote"
+	  	<Link
+				to={'/delete-note'}
 			>
-				Delete Note
-	    </button>
+		    <button
+					className="DeleteNote"
+				>
+					Delete Note
+	    	</button>
+	    </Link>
 	  );		
 	}
 
