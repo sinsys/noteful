@@ -27,7 +27,7 @@ export default class Note extends Component {
 	    		className="Note-name"
 	    	>
 	    		<Link
-	    			to={'/notes/' + this.props.id}
+	    			to={'/note/' + this.props.id}
 	    		>
 	    			{this.props.name}
 	    		</Link>

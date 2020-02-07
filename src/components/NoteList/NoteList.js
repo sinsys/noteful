@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import Note from './Note/Note';
 import AddNote from './AddNote/AddNote';
 
-import './Main.css';
+import './NoteList.css';
 
-class Main extends Component {
+class NoteList extends Component {
 
 	render() {
 	  return (
@@ -14,6 +14,11 @@ class Main extends Component {
 	    >
 	    	<h2>
 	    		Notes
+	    		<span
+	    			className="Notes-count"
+	    		>
+	    			{this.props.notes.length}
+	    		</span>
 	    	</h2>
 
       	<div
@@ -36,11 +41,11 @@ class Main extends Component {
 
 }
 
-Main.defaultProps = {
+NoteList.defaultProps = {
 	notes: []
 }
 
-export default Main;
+export default NoteList;
 
 
 
