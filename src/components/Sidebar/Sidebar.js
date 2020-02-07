@@ -15,10 +15,11 @@ class Sidebar extends Component {
   }
 
 	render() {
-		console.log(this.props);
 	  return (
 	    <div className="Sidebar">
-	    	<SidebarNav />
+	    	<SidebarNav 
+	    		{...this.props.routeProps}
+	    	/>
 	    	<h2>
 	    		Folders
 	    	</h2>
@@ -40,7 +41,7 @@ class Sidebar extends Component {
 }
 
 Sidebar.defaultProps = {
-	folders: []
+	folders: [],
 }
 
 export default Sidebar;

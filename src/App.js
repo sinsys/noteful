@@ -5,6 +5,8 @@ import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import NoteList from './components/NoteList/NoteList';
 import NoteDetails from './components/NoteDetails/NoteDetails';
+import AddFolderForm from './components/Forms/AddFolderForm/AddFolderForm';
+import AddNoteForm from './components/Forms/AddNoteForm/AddNoteForm';
 
 import './App.css';
 import STORE from './STORE.js';
@@ -40,6 +42,7 @@ export default class App extends Component {
                   key={"Sidebar"}
                   folders={folders}
                   notes={notes}
+                  {...routeProps}
                 />
                 <NoteList 
                   key={"NoteList"}
@@ -55,11 +58,11 @@ export default class App extends Component {
     // Note routes
     routes.push(
       <Route
-        path="/note/:noteId"
+        key="/note/:noteId"
+        exact path="/note/:noteId"
         render={routeProps => {
           const {noteId} = routeProps.match.params;
           const note = this.getNote(notes, noteId) || {};
-          console.log(note);
           return (
             <div
               className="Sidebar-NoteList_wrapper"
@@ -78,6 +81,21 @@ export default class App extends Component {
         }}
       />
     );
+
+    // Form routes
+    routes.push(
+      <Route 
+        key="/add-folder"
+        path="/add-folder" 
+        component={AddFolderForm}
+      />,
+      <Route 
+        key="/add-note"
+        path="/add-note" 
+        component={AddNoteForm}
+      />
+    );
+    
     return (
       routes
     )

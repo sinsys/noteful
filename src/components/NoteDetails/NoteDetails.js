@@ -23,6 +23,9 @@ class NoteDetails extends Component {
 
 }
 
+NoteDetails.defaultProps = {
+  content: ''
+}
 export default NoteDetails;
 
 

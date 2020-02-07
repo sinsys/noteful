@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import NoteList from './NoteList';
+import AddNoteForm from './AddNoteForm';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
   	<BrowserRouter>
-  		<NoteList />
+  		<AddNoteForm />
   	</BrowserRouter>,
   	div
   );
