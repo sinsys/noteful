@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/noteful/static/css/main.1d0a1454.chunk.css",
-    "main.js": "/noteful/static/js/main.4d5bbe35.chunk.js",
-    "main.js.map": "/noteful/static/js/main.4d5bbe35.chunk.js.map",
+    "main.js": "/noteful/static/js/main.deb539f3.chunk.js",
+    "main.js.map": "/noteful/static/js/main.deb539f3.chunk.js.map",
     "runtime-main.js": "/noteful/static/js/runtime-main.75b1ecd5.js",
     "runtime-main.js.map": "/noteful/static/js/runtime-main.75b1ecd5.js.map",
     "static/js/2.c11e600b.chunk.js": "/noteful/static/js/2.c11e600b.chunk.js",
     "static/js/2.c11e600b.chunk.js.map": "/noteful/static/js/2.c11e600b.chunk.js.map",
     "index.html": "/noteful/index.html",
-    "precache-manifest.86b72bd80e8135a0c4136109513ea3ce.js": "/noteful/precache-manifest.86b72bd80e8135a0c4136109513ea3ce.js",
+    "precache-manifest.8fd75a3cd43f94f1cc810d178efd0dc0.js": "/noteful/precache-manifest.8fd75a3cd43f94f1cc810d178efd0dc0.js",
     "service-worker.js": "/noteful/service-worker.js",
     "static/css/main.1d0a1454.chunk.css.map": "/noteful/static/css/main.1d0a1454.chunk.css.map",
     "static/js/2.c11e600b.chunk.js.LICENSE.txt": "/noteful/static/js/2.c11e600b.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.75b1ecd5.js",
     "static/js/2.c11e600b.chunk.js",
     "static/css/main.1d0a1454.chunk.css",
-    "static/js/main.4d5bbe35.chunk.js"
+    "static/js/main.deb539f3.chunk.js"
   ]
 }
