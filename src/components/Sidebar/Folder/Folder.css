@@ -9,10 +9,27 @@
 .Folder-count {
 	font-size: 12px;
 	margin-left: 0.5rem;
-	width: 24px;
-	height: 24px;
-	border-radius: 12px;
+	border-radius: 16px;
 	background: #CCC;
-	display: inline-block;
-	text-align: center;
+	padding: 0.25rem 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+li {
+	display: flex;
+	
+}
+a {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 0.25rem;
+	text-decoration: none;
+	align-items: center;
+}
+
+.active {
+	background: #0F0;
 }

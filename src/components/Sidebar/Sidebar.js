@@ -20,7 +20,7 @@ class Sidebar extends Component {
 	    <div className="Sidebar">
 	    	<SidebarNav />
 	    	<h2>
-	    		Sidebar
+	    		Folders
 	    	</h2>
 	    	{this.props.folders
 	    		.map(folder => (

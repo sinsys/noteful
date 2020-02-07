@@ -13,7 +13,7 @@ class Main extends Component {
 	    	className="Main"
 	    >
 	    	<h2>
-	    		Main
+	    		Notes
 	    	</h2>
 
       	<div
