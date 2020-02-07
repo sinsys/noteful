@@ -1,4 +1,35 @@
 .Folder {
 	margin: 0.25rem;
 	border: 1px solid #CCC;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+.Folder-count {
+	font-size: 12px;
+	margin-left: 0.5rem;
+	border-radius: 16px;
+	background: #CCC;
+	padding: 0.25rem 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+li {
+	display: flex;
+	
+}
+a {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 0.25rem;
+	text-decoration: none;
+	align-items: center;
+}
+
+.active {
+	background: #0F0;
 }

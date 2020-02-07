@@ -1,4 +1,7 @@
 .App {
+
+}
+
+.Sidebar-NoteList_wrapper {
   display: flex;
-  flex-wrap: wrap;
 }

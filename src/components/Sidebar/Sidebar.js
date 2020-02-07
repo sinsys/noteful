@@ -8,19 +8,28 @@ import './Sidebar.css';
 
 class Sidebar extends Component {
 
+  countFolderNotes = (notes=[], folderId) => {
+    return notes.filter(note => 
+    	note.folderId === folderId
+    ).length;
+  }
+
 	render() {
 	  return (
 	    <div className="Sidebar">
-	    	<SidebarNav />
+	    	<SidebarNav 
+	    		{...this.props.routeProps}
+	    	/>
 	    	<h2>
-	    		Sidebar
+	    		Folders
 	    	</h2>
 	    	{this.props.folders
 	    		.map(folder => (
 	    			<Folder
 	    				id={folder.id}
-	    				key={folder.key}
+	    				key={folder.id}
 	    				name={folder.name}
+	    				count={this.countFolderNotes(this.props.notes, folder.id)}
 	    			/>
 	    		))
 	    	}
@@ -32,7 +41,7 @@ class Sidebar extends Component {
 }
 
 Sidebar.defaultProps = {
-	folders: []
+	folders: [],
 }
 
 export default Sidebar;

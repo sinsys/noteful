@@ -1,0 +1,21 @@
+.Main {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	border: 1px solid #CCC;
+	flex-grow: 4;
+	flex-wrap: wrap;
+}
+
+.Main h2 {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.Notes-count {
+	font-size: 16px;
+	margin-left: 0.5rem;
+	border-radius: 2rem;
+	background: #CCC;
+	padding: 0.5rem 1rem;
+}

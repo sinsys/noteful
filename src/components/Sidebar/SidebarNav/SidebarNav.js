@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 
 import './SidebarNav.css';
 
-export default class SidebarNav extends Component {
+class SidebarNav extends Component {
 
 	render() {
 	  return (
 	  	<Link
-	  		to={'/back'}
+	  		to={'/'}
 	  	>
 		    <button
 		    	className="SidebarNav"
+		    	onClick={() => this.props.history.goBack()}
 		    >
 		    	Go Back
 		    </button>
@@ -20,3 +21,11 @@ export default class SidebarNav extends Component {
 	}
 
 }
+
+SidebarNav.defaultProps = {
+  history: {
+    goBack: () => {}
+  }
+}
+
+export default SidebarNav;
