@@ -11,33 +11,69 @@ import STORE from './STORE.js';
 export default class App extends Component {
   
   state = {
-    STORE,
     folders: [],
     notes: []
   };
 
+  folderRoutes() {
+    const {notes, folders} = this.state;
+    const routes = [
+      ['/', '/folder/:folderId'].map(path => (
+        <Route
+            exact
+            key={path}
+            path={path}
+            render={routeProps => {
+              const {folderId} = routeProps.match.params;
+              const folderNotes = this.getFolderNotes(
+                  notes,
+                  folderId
+              );
+              return (
+                <div
+                  className="Sidebar-Main__wrapper"
+                >
+                  <Sidebar
+                    key={"Sidebar"}
+                    folders={folders}
+                    notes={notes}
+                  />
+                  <Main 
+                    key={"Main"}
+                    notes={folderNotes}
+                  />
+                </div>
+              );
+            }}
+          />
+      ))
+    ];
+    return (
+      routes
+    )
+  };
+
+  getFolderNotes = (notes=[], folderId) => {
+    return (!folderId)
+      ? notes
+      : notes.filter(note => note.folderId === folderId)
+  }
+
   componentDidMount() {
     setTimeout(() => {
-      this.setState({
-        folders: STORE.folders,
-        notes: STORE.notes
-      });
+      this.setState(
+        STORE
+      );
     }, 500);
+
   };
+
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Sidebar
-          key={"Sidebar"}
-          folders={this.state.folders}
-          notes={this.state.notes}
-        />
-        <Main 
-          key={"Main"}
-          notes={this.state.notes}
-        />
+        {this.folderRoutes()}
       </div>
     );
   };

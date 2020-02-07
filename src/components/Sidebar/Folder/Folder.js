@@ -5,24 +5,20 @@ import './Folder.css';
 
 export default class Folder extends Component {
 
-  getFolderNotes = (notes=[], folderId) => (
-    (!folderId)
-      ? notes
-      : notes
-          .filter(note => (
-            note.folderId === folderId
-          ))
-  );
-
 	render() {
 	  return (
 	    <li 
 	    	className="Folder"
 	    >
 	    	<Link
-	    		to={'/folders/' + this.props.id}
+	    		to={'/folder/' + this.props.id}
 	    	>
 	    		{this.props.name}
+	    		<span
+	    			className="Folder-count"
+	    		>
+	    			{this.props.count}
+	    		</span>
 	    	</Link>
 	    </li>
 	  );		

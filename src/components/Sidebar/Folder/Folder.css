@@ -1,4 +1,18 @@
 .Folder {
 	margin: 0.25rem;
 	border: 1px solid #CCC;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+.Folder-count {
+	font-size: 12px;
+	margin-left: 0.5rem;
+	width: 24px;
+	height: 24px;
+	border-radius: 12px;
+	background: #CCC;
+	display: inline-block;
+	text-align: center;
 }
