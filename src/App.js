@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -11,6 +11,7 @@ import STORE from './STORE.js';
 export default class App extends Component {
   
   state = {
+    STORE,
     folders: [],
     notes: []
   };
@@ -29,9 +30,12 @@ export default class App extends Component {
       <div className="App">
         <Header />
         <Sidebar
+          key={"Sidebar"}
           folders={this.state.folders}
+          notes={this.state.notes}
         />
         <Main 
+          key={"Main"}
           notes={this.state.notes}
         />
       </div>

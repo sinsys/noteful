@@ -15,15 +15,18 @@ class Sidebar extends Component {
 	    	<h2>
 	    		Sidebar
 	    	</h2>
-	    	{this.props.folders
-	    		.map(folder => (
-	    			<Folder
-	    				id={folder.id}
-	    				key={folder.key}
-	    				name={folder.name}
-	    			/>
-	    		))
-	    	}
+	    	<ul
+	    		className="Sidebar-nav-ul"
+	    	/>
+		    	{this.props.folders
+		    		.map(folder => (
+		    			<Folder
+		    				id={folder.id}
+		    				key={folder.id}
+		    				name={folder.name}
+		    			/>
+		    		))
+		    	}
 	    	<AddFolder />
 	    </div>
 	  );		

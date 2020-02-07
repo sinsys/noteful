@@ -5,15 +5,26 @@ import './Folder.css';
 
 export default class Folder extends Component {
 
+  getFolderNotes = (notes=[], folderId) => (
+    (!folderId)
+      ? notes
+      : notes
+          .filter(note => (
+            note.folderId === folderId
+          ))
+  );
+
 	render() {
 	  return (
-	    <div className="Folder">
+	    <li 
+	    	className="Folder"
+	    >
 	    	<Link
 	    		to={'/folders/' + this.props.id}
 	    	>
 	    		{this.props.name}
 	    	</Link>
-	    </div>
+	    </li>
 	  );		
 	}
 

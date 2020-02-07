@@ -16,6 +16,7 @@ class Main extends Component {
 	    		.map(note => (
 	    			<Note
 	    				{...note}
+	    				key={note.id}
 	    			/>
 	    		))
 	    	}
