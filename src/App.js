@@ -18,7 +18,7 @@ export default class App extends Component {
   folderRoutes() {
     const {notes, folders} = this.state;
     const routes = [
-      ['/', '/folder/:folderId'].map(path => (
+      ['/noteful/', '/noteful/folder/:folderId'].map(path => (
         <Route
             exact
             key={path}

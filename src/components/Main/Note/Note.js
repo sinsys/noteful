@@ -8,8 +8,6 @@ import './Note.css';
 
 export default class Note extends Component {
 
-	
-
 	render() {
 
 		const formattedDate = format(
