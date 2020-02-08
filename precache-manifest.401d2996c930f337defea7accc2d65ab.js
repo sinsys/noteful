@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8c50c53a449c65edb22dfbbe76d8d176",
+    "revision": "67d474b048f7d7c7bfcbfb26492fd46b",
     "url": "/noteful/index.html"
   },
   {
