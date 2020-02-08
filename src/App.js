@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -124,10 +124,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        {this.makeRoutes()}
-      </div>
+      <HashRouter
+        baseName='/'
+      >
+        <div className="App">
+          <Header />
+          {this.makeRoutes()}
+        </div>
+      </HashRouter>
     );
   };
 
