@@ -9,7 +9,10 @@ import AddFolderForm from './components/Forms/AddFolderForm/AddFolderForm';
 import AddNoteForm from './components/Forms/AddNoteForm/AddNoteForm';
 
 import './App.css';
-import STORE from './STORE.js';
+
+import APIContext from './APIContext';
+import config from './config.js';
+// import STORE from './STORE.js';
 
 export default class App extends Component {
   
@@ -19,7 +22,7 @@ export default class App extends Component {
   };
 
   makeRoutes = () => {
-    const {notes, folders} = this.state;
+    const {notes} = this.state;
     const routes = [];
 
     // Root and Folder Routes
@@ -30,23 +33,18 @@ export default class App extends Component {
           path={path}
           render={routeProps => {
             const {folderId} = routeProps.match.params;
-            const folderNotes = this.getFolderNotes(
-                notes,
-                folderId
-            );
             return (
               <div
                 className="Sidebar-NoteList_wrapper"
               >
                 <Sidebar
                   key={"Sidebar"}
-                  folders={folders}
-                  notes={notes}
-                  {...routeProps}
+                  folderId={folderId}
                 />
                 <NoteList 
                   key={"NoteList"}
-                  notes={folderNotes}
+                  folderId={folderId}
+                  {...routeProps}
                 />
               </div>
             );
@@ -69,11 +67,10 @@ export default class App extends Component {
             >
               <Sidebar
                 key={"Sidebar"}
-                folders={folders}
-                notes={notes}
               />
               <NoteDetails
                 key={"NoteDetails"}
+                {...routeProps}
                 {...note}
               />
             </div>
@@ -101,33 +98,76 @@ export default class App extends Component {
     )
   };
 
-  getFolderNotes = (notes=[], folderId) => {
-    return (!folderId)
-      ? notes
-      : notes.filter(note => note.folderId === folderId)
-  };
-  
   getNote = (notes=[], noteId) => {
     return (
       notes.find(note => note.id === noteId)
     );
   };
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState(
-        STORE
-      );
-    }, 500);
+  handleDeleteNote = noteId => {
+    this.setState({
+      notes: this.state.notes.filter(note => {
+        return note.id !== noteId
+      })
+    })
+    console.log(this.state);
+  }
 
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/notes`),
+      fetch(`${config.API_ENDPOINT}/folders`)
+    ])
+      .then(([notesRes, foldersRes]) => {
+        if(!notesRes.ok) {
+          return (
+            notesRes.json()
+              .then(err => {
+                Promise.reject(err)
+              })
+          )
+        }
+        if(!foldersRes.ok) {
+          return (
+            foldersRes.json()
+              .then(err => {
+                Promise.reject(err);
+              })
+          )
+        }
+        return (
+          Promise.all([
+            notesRes.json(),
+            foldersRes.json()
+          ])
+        )
+      })
+      .then(([notes, folders]) => {
+        this.setState({
+          notes,
+          folders
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
   };
 
   render() {
+    const contextValue = {
+      notes: this.state.notes,
+      folders: this.state.folders,
+      deleteNote: this.handleDeleteNote
+    }
     return (
-      <div className="App">
-        <Header />
-        {this.makeRoutes()}
-      </div>
+      <APIContext.Provider 
+        value={contextValue}
+      >
+        <div className="App">
+          <Header />
+          {this.makeRoutes()}
+        </div>
+      </APIContext.Provider>
     );
   };
 

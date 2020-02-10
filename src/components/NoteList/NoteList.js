@@ -2,12 +2,30 @@ import React, { Component } from 'react';
 
 import Note from './Note/Note';
 import AddNote from './AddNote/AddNote';
+import APIContext from '../../APIContext';
 
 import './NoteList.css';
 
 class NoteList extends Component {
 
+  static defaultProps = {
+    match: {
+      params: {}
+    }
+  }
+
+  static contextType = APIContext;
+
+  getFolderNotes = (notes=[], folderId) => {
+    return (!folderId)
+      ? notes
+      : notes.filter(note => note.folderId === folderId)
+  };
+
 	render() {
+		const { notes = [] } = this.context;
+		const { folderId } = this.props.match.params;
+		const folderNotes = this.getFolderNotes(notes, folderId);
 	  return (
 	    <main 
 	    	className="Main"
@@ -17,14 +35,13 @@ class NoteList extends Component {
 	    		<span
 	    			className="Notes-count"
 	    		>
-	    			{this.props.notes.length}
+	    			{folderNotes.length}
 	    		</span>
 	    	</h2>
-
       	<div
       		className="Notes-wrapper"
       	>
-	 	    	{this.props.notes
+	 	    	{folderNotes
 		    		.map(note => (
 		    			<Note
 		    				{...note}
@@ -33,16 +50,11 @@ class NoteList extends Component {
 		    		))
 		    	}
         </div>
-
 	    	<AddNote />
 	    </main>
 	  );		
 	}
 
-}
-
-NoteList.defaultProps = {
-	notes: []
 }
 
 export default NoteList;
