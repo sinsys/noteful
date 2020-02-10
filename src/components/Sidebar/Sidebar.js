@@ -3,10 +3,13 @@ import React, { Component } from 'react';
 import SidebarNav from './SidebarNav/SidebarNav';
 import Folder from './Folder/Folder';
 import AddFolder from './AddFolder/AddFolder';
+import APIContext from '../../APIContext';
 
 import './Sidebar.css';
 
 class Sidebar extends Component {
+
+	static contextType = APIContext;
 
   countFolderNotes = (notes=[], folderId) => {
     return notes.filter(note => 
@@ -15,6 +18,7 @@ class Sidebar extends Component {
   }
 
 	render() {
+		const { folders=[], notes=[] } = this.context
 	  return (
 	    <div className="Sidebar">
 	    	<SidebarNav 
@@ -23,13 +27,13 @@ class Sidebar extends Component {
 	    	<h2>
 	    		Folders
 	    	</h2>
-	    	{this.props.folders
+	    	{folders
 	    		.map(folder => (
 	    			<Folder
 	    				id={folder.id}
 	    				key={folder.id}
 	    				name={folder.name}
-	    				count={this.countFolderNotes(this.props.notes, folder.id)}
+	    				count={this.countFolderNotes(notes, folder.id)}
 	    			/>
 	    		))
 	    	}
@@ -38,10 +42,6 @@ class Sidebar extends Component {
 	  );		
 	}
 
-}
-
-Sidebar.defaultProps = {
-	folders: [],
 }
 
 export default Sidebar;

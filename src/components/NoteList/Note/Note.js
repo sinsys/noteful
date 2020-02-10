@@ -19,6 +19,8 @@ export default class Note extends Component {
 			'Pp'
 		);
 
+
+
 	  return (
 	    <div 
 	    	className="Note"
@@ -34,6 +36,7 @@ export default class Note extends Component {
 	    	</h3>
 	    	<DeleteNote 
 	    		id={this.props.id}
+	    		onDeleteNote={this.props.onDeleteNote}
 	    	/>
 	    	<p
 	    		className="Note-modified"

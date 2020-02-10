@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
 	<HashRouter
-		basename="/noteful/"
+		basename="/"
 	>
 		<App />
 	</HashRouter>, 
