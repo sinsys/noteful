@@ -1,0 +1,36 @@
+div.SidebarNav{
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: transparent;
+	border-radius: 5px;
+	padding: 0.5rem;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+	font-size: 1rem;
+	text-align: center;
+	font-weight: bold;
+	position: absolute;
+	color: #FEFEFE;
+	display: block;
+	width: 2rem;
+	border-radius: 50%;
+	left: 2rem;
+	top: 2rem;
+	font-size: 2rem;
+	line-height: 2rem;
+	cursor: pointer;
+	border: 3px solid #CCC;
+	background: #153957;
+}
+
+div.SidebarNav:hover{
+	background: #80BAEA;
+	letter-spacing: 1px;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+	transform: scale(1.1);
+}

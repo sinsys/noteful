@@ -30,14 +30,7 @@ class NoteList extends Component {
 	    <main 
 	    	className="Main"
 	    >
-	    	<h2>
-	    		Notes
-	    		<span
-	    			className="Notes-count"
-	    		>
-	    			{folderNotes.length}
-	    		</span>
-	    	</h2>
+	    	<AddNote />
       	<div
       		className="Notes-wrapper"
       	>
@@ -50,7 +43,6 @@ class NoteList extends Component {
 		    		))
 		    	}
         </div>
-	    	<AddNote />
 	    </main>
 	  );		
 	}

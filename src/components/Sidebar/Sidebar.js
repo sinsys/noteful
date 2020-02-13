@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import SidebarNav from './SidebarNav/SidebarNav';
+import { NavLink } from 'react-router-dom';
 import Folder from './Folder/Folder';
 import AddFolder from './AddFolder/AddFolder';
 import APIContext from '../../APIContext';
@@ -11,29 +10,32 @@ class Sidebar extends Component {
 
 	static contextType = APIContext;
 
-  countFolderNotes = (notes=[], folderId) => {
-    return notes.filter(note => 
-    	note.folderId === folderId
-    ).length;
-  }
-
 	render() {
-		const { folders=[], notes=[] } = this.context
+		const { folders=[] } = this.context
 	  return (
 	    <div className="Sidebar">
-	    	<SidebarNav 
-	    		{...this.props.routeProps}
-	    	/>
 	    	<h2>
 	    		Folders
 	    	</h2>
+	    	<NavLink
+	    		exact
+	    		to={'/'}
+	    		className="Folder"
+	    	>
+	    		<span>
+	    			All Notes
+	    		</span>
+	    		<span
+	    			className="Notes-count"
+	    		>
+	    			{this.context.notes.length}
+	    		</span>
+	    	</NavLink>
 	    	{folders
 	    		.map(folder => (
 	    			<Folder
-	    				id={folder.id}
 	    				key={folder.id}
-	    				name={folder.name}
-	    				count={this.countFolderNotes(notes, folder.id)}
+	    				{...folder}
 	    			/>
 	    		))
 	    	}

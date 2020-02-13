@@ -1,27 +1,18 @@
-.Folder {
-	margin: 0.25rem;
-	border: 1px solid #CCC;
+
+
+
+
+.Folder li {
 	display: flex;
 	justify-content: center;
-	align-items: center;	
-}
-
-.Folder-count {
-	font-size: 12px;
-	margin-left: 0.5rem;
-	border-radius: 16px;
-	background: #CCC;
-	padding: 0.25rem 0.5rem;
-	display: flex;
 	align-items: center;
-	justify-content: center;
 }
 
-li {
-	display: flex;
-	
+.Folder a,a:visited,a:active,a:hover {
+	color: #FFF;
 }
-a {
+
+.Folder a {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
@@ -30,6 +21,50 @@ a {
 	align-items: center;
 }
 
-.active {
-	background: #0F0;
+.Folder {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;	
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin: 0.5rem 0;
+	background: #434343;
+	border-radius: 5px;
+	padding: 0.5rem 0;
+	border: none;
+	transition: all 0.4s ease 0s;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.Folder:hover, .Folder.active{
+	color: #131313;
+	background: #80BAEA;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+}
+
+.Folder span {
+	margin: 0 1rem;
+}
+
+
+
+.Notes-count {
+	font-size: 0.75rem;
+	margin-left: 0.5rem;
+	border-radius: 2rem;
+	background: #333;
+	padding: 0.5rem 1rem;
+	color: #FEFEFE;
+	margin-right: 0.5rem;
+	transition: all 0.4s ease 0s;
+}
+
+.Folder.active .Notes-count {
+	color: #131313;
+	background: #FFF;
 }
