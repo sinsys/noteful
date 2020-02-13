@@ -1,0 +1,55 @@
+.Note div.DeleteNote {
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #BBB;
+	border-radius: 5px 5px 5px 5px;
+	padding: 1rem;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+	font-size: 1rem;
+	text-align: center;
+	max-width: 300px;
+	font-weight: bold;
+	color: #FEFEFE;
+	cursor: pointer;
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+	margin-left: 1rem;
+}
+
+.Note div.DeleteNote:hover{
+	background: #D33535;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+}
+
+.Main > .DeleteNote {
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #BBB;
+	border-radius: 5px 5px 5px 5px;
+	padding: 1rem;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+	font-size: 1rem;
+	text-align: center;
+	max-width: 300px;
+	font-weight: bold;
+	color: #FEFEFE;
+	cursor: pointer;
+	margin-left: 1rem;
+}
+
+.Main > .DeleteNote:hover {
+	background: #D33535;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;	
+}

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import './SidebarNav.css';
 
@@ -7,25 +6,15 @@ class SidebarNav extends Component {
 
 	render() {
 	  return (
-	  	<Link
-	  		to={'/'}
+	  	<div
+	  		className="SidebarNav"
+	  		onClick={() => this.props.handleGoBack()}
 	  	>
-		    <button
-		    	className="SidebarNav"
-		    	onClick={() => this.props.history.goBack()}
-		    >
-		    	Go Back
-		    </button>
-		  </Link>
+		    &#x25c0;&nbsp;
+		  </div>
 	  );		
 	}
-
 }
 
-SidebarNav.defaultProps = {
-  history: {
-    goBack: () => {}
-  }
-}
 
 export default SidebarNav;

@@ -1,6 +1,15 @@
 .Header {
 	display: flex;
 	flex: 0 0 100%;
-	border: 1px solid #CCC;
 	justify-content: center;
+	background: #153957;
+}
+
+.Header a,
+.Header a:visited,
+.Header a:active,
+.Header a:hover {
+	color: #FEFEFE;
+	text-decoration: none;
+	font-weight: bold;
 }

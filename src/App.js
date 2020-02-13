@@ -7,6 +7,7 @@ import NoteList from './components/NoteList/NoteList';
 import NoteDetails from './components/NoteDetails/NoteDetails';
 import AddFolderForm from './components/Forms/AddFolderForm/AddFolderForm';
 import AddNoteForm from './components/Forms/AddNoteForm/AddNoteForm';
+import SidebarNav from './components/Sidebar/SidebarNav/SidebarNav';
 
 import './App.css';
 
@@ -84,13 +85,35 @@ export default class App extends Component {
       <Route 
         key="/add-folder"
         path="/add-folder" 
-        component={AddFolderForm}
+        render={routeProps => {
+          return (
+            <div
+              className="Sidebar-NoteList_wrapper"
+            >
+              <Sidebar
+                key={"Sidebar"}
+              />
+              <AddFolderForm />
+            </div>
+          )
+        }}
       />,
       <Route 
         key="/add-note"
         path="/add-note" 
-        component={AddNoteForm}
-      />
+        render={routeProps => {
+          return (
+            <div
+              className="Sidebar-NoteList_wrapper"
+            >
+              <Sidebar
+                key={"Sidebar"}
+              />
+              <AddNoteForm />
+            </div>
+          )
+        }}
+      />,
     );
     
     return (
@@ -110,8 +133,25 @@ export default class App extends Component {
         return note.id !== noteId
       })
     })
-    console.log(this.state);
-  }
+  };
+
+  handleAddFolder = folder => {
+    this.setState({
+      folders: [
+        ...this.state.folders,
+        folder
+      ]
+    })
+  };
+
+  handleAddNote = note => {
+    this.setState({
+      notes: [
+        ...this.state.notes,
+        note
+      ]
+    })
+  };
 
   componentDidMount() {
     Promise.all([
@@ -157,6 +197,8 @@ export default class App extends Component {
     const contextValue = {
       notes: this.state.notes,
       folders: this.state.folders,
+      addFolder: this.handleAddFolder,
+      addNote: this.handleAddNote,
       deleteNote: this.handleDeleteNote
     }
     return (
@@ -164,6 +206,22 @@ export default class App extends Component {
         value={contextValue}
       >
         <div className="App">
+          <Route
+            key="Header"
+            path="/"
+            render={routeProps => {
+              return (
+                <>
+                  {(routeProps.location.pathname !== '/')
+                    ? <SidebarNav 
+                        handleGoBack={routeProps.history.goBack}
+                      />
+                    : <></>
+                  }
+                </>
+              )
+            }}
+          />
           <Header />
           {this.makeRoutes()}
         </div>

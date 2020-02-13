@@ -9,12 +9,9 @@ export default class AddFolder extends Component {
 	  return (
 	  	<Link
 	  		to={'/add-folder'}
+	  		className="AddFolder"
 	  	>
-		    <button
-		    	className="AddFolder"
-		    >
-		    	Add Folder
-		    </button>
+		    + Add Folder
 	    </Link>
 	  );		
 	}

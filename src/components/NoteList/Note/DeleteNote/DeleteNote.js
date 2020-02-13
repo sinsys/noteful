@@ -8,7 +8,9 @@ import './DeleteNote.css';
 export default class DeleteNote extends Component {
 
   static defaultProps ={
-    onDeleteNote: () => {},
+    history: {
+      goBack: () => {}
+    }
   }
 
   static contextType = APIContext;
@@ -30,8 +32,7 @@ export default class DeleteNote extends Component {
       })
       .then(() => {
         this.context.deleteNote(noteId);
-        // allow parent to perform extra behaviour
-        this.props.onDeleteNote(noteId);
+        this.props.history.goBack();
       })
       .catch(error => {
         console.error({ error })
@@ -40,12 +41,12 @@ export default class DeleteNote extends Component {
 
 	render() {
 	  return (
-	    <button
+	    <div
 				className="DeleteNote"
 				onClick={this.handleClickDelete}
 			>
-				Delete Note
-    	</button>
+				Delete
+    	</div>
 	  );		
 	}
 

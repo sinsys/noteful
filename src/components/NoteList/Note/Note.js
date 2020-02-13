@@ -8,6 +8,25 @@ import './Note.css';
 
 export default class Note extends Component {
 
+  static defaultProps = {
+    match: {
+      params: {}
+    }
+  }
+
+	// Prevents massive descriptions being listed in list
+	reduceDescLength(str, maxChars) {
+		if(str !== undefined){
+			return (
+				str.length > maxChars
+					? str.substring(0, maxChars - 3) + "..." 
+					: str.substring(0, maxChars)
+			);
+		}	else {
+			return "This book currently has no description listed.";
+		}
+	}
+
 	render() {
 
 		const formattedDate = format(
@@ -19,30 +38,37 @@ export default class Note extends Component {
 			'Pp'
 		);
 
-
-
 	  return (
 	    <div 
 	    	className="Note"
 	    >
-	    	<h3
-	    		className="Note-name"
-	    	>
+	    	<div className="Note-content-wrapper">
 	    		<Link
 	    			to={'/note/' + this.props.id}
 	    		>
-	    			{this.props.name}
-	    		</Link>
-	    	</h3>
+			    	<h3
+			    		className="Note-name"
+			    	>
+		    			{this.props.name}
+		    		
+			    	</h3>
+			    	<p
+			    		className="Note-content-abbv"
+			    	>
+			    		{this.reduceDescLength(this.props.content, 128)}
+			    	</p>
+			    	<p
+			    		className="Note-modified"
+			    	>
+			    		Modified {formattedDate}
+			    	</p>
+		    	
+		    	</Link>
+	    	</div>
 	    	<DeleteNote 
 	    		id={this.props.id}
 	    		onDeleteNote={this.props.onDeleteNote}
 	    	/>
-	    	<p
-	    		className="Note-modified"
-	    	>
-	    		Modified {formattedDate}
-	    	</p>
 	    </div>
 	  );		
 	}

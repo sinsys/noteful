@@ -9,12 +9,9 @@ export default class AddNote extends Component {
 	  return (
 	  	<Link
 	  		to={'/add-note'}
+	  		className="AddNote"
 	  	>
-		    <button
-					className="AddNote"
-				>
-					Add Note
-		    </button>
+	  		+ Add Note
 		  </Link>
 	  );		
 	}
