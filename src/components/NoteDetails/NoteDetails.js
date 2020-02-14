@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import DeleteNote from '../NoteList/Note/DeleteNote/DeleteNote';
-import APIContext from '../../APIContext';
 
 import './NoteDetails.css';
 
 class NoteDetails extends Component {
-
-	static contextType = APIContext;
 
 	render() {
 	  return (
@@ -42,7 +40,9 @@ class NoteDetails extends Component {
 					      </div>
 				    	</div>
 	  		    	<DeleteNote 
-				    		{...this.props}
+	  		    		id={this.props.id}
+				    		folderId={this.props.folderId}
+				    		history={this.props.history}
 				    	/>
 			    	</>
     		}
@@ -53,13 +53,22 @@ class NoteDetails extends Component {
 }
 
 NoteDetails.defaultProps = {
+	id: '',
 	content: '',
+	folderId: '',
+	modified: '',
+	name: '',
   history: {
     goBack: () => {}
   }
 }
 
+NoteDetails.propTypes = {
+	id: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	folderId: PropTypes.string.isRequired,
+	modified: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired
+}
+
 export default NoteDetails;
-
-
-

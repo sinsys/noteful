@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import APIContext from '../../../APIContext';
 
 import './Folder.css';
 
 export default class Folder extends Component {
 
-	static contextType = APIContext;
+  static contextType = APIContext;
 
   countFolderNotes = (notes=[], folderId) => {
     return notes.filter(note => 
@@ -32,4 +34,12 @@ export default class Folder extends Component {
 	  );		
 	}
 
+}
+
+Folder.defaultProps = {
+  name: ''
+}
+
+Folder.propTypes = {
+  name: PropTypes.string.isRequired
 }

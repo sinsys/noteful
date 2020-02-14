@@ -13,7 +13,6 @@ import './App.css';
 
 import APIContext from './APIContext';
 import config from './config.js';
-// import STORE from './STORE.js';
 
 export default class App extends Component {
   
@@ -45,7 +44,6 @@ export default class App extends Component {
                 <NoteList 
                   key={"NoteList"}
                   folderId={folderId}
-                  {...routeProps}
                 />
               </div>
             );
@@ -71,7 +69,6 @@ export default class App extends Component {
               />
               <NoteDetails
                 key={"NoteDetails"}
-                {...routeProps}
                 {...note}
               />
             </div>
@@ -213,9 +210,7 @@ export default class App extends Component {
               return (
                 <>
                   {(routeProps.location.pathname !== '/')
-                    ? <SidebarNav 
-                        handleGoBack={routeProps.history.goBack}
-                      />
+                    ? <SidebarNav />
                     : <></>
                   }
                 </>

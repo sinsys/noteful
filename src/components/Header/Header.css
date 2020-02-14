@@ -1,7 +1,7 @@
 .Header {
 	display: flex;
 	flex: 0 0 100%;
-	justify-content: center;
+	justify-content: flex-start;
 	background: #153957;
 }
 
@@ -12,4 +12,8 @@
 	color: #FEFEFE;
 	text-decoration: none;
 	font-weight: bold;
+}
+
+.Header h1 {
+	margin-left: 300px;
 }
