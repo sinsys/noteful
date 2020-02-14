@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter, Route, Link } from 'react-router-dom';
 import Note from './Note/Note';
 import AddNote from './AddNote/AddNote';
+import NoteListError from './NoteListError';
 import APIContext from '../../APIContext';
 
 import './NoteList.css';
@@ -47,38 +48,41 @@ class NoteList extends Component {
 						<main 
 							className="Main"
 						>
-							{(this.props.folderId === "undefined" || this.verifyFolderExists(folders, this.props.folderId))
-							  ?	<>
-										<AddNote 
-									  	folderName={this.getFolderName(folders, folderId)}
-									  />
-										<div
-											className="Notes-wrapper"
-										>
-										{folderNotes
-										  .map(note => (
-										  	<Note
-										  		{...note}
-										  		key={note.id}
-										  	/>
-										  ))
-										}
-									  </div>
-							  	</>
-							  : <div
-			    					className="empty"
-			    				>
-			    					<p>
-			    						I'm sorry, this folder does not exist.
-			    					</p>
-			    					<Link
-			    						to='/'
-			    					>
-			    						Home
-			    					</Link>
-			    				</div>
-							}
+							<NoteListError>
+								{(this.props.folderId === "undefined" || this.verifyFolderExists(folders, this.props.folderId))
+								  ?	<>
+											<AddNote 
+										  	folderName={this.getFolderName(folders, folderId)}
+										  />
+											<div
+												className="Notes-wrapper"
+											>
+											{folderNotes
+											  .map(note => (
+											  	<Note
+											  		{...note}
+											  		key={note.id}
+											  	/>
+											  ))
+											}
+										  </div>
+								  	</>
+								  : <div
+				    					className="empty"
+				    				>
+				    					<p>
+				    						I'm sorry, this folder does not exist.
+				    					</p>
+				    					<Link
+				    						to='/'
+				    					>
+				    						Home
+				    					</Link>
+				    				</div>
+								}
+							</NoteListError>
 						</main>
+
           )
         }}
       />

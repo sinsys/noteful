@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Folder from './Folder/Folder';
 import AddFolder from './AddFolder/AddFolder';
+import SidebarError from './SidebarError';
 import APIContext from '../../APIContext';
 
 import './Sidebar.css';
@@ -33,14 +34,16 @@ class Sidebar extends Component {
 	    			{this.context.notes.length}
 	    		</span>
 	    	</NavLink>
-	    	{folders
-	    		.map(folder => (
-	    			<Folder
-	    				key={folder.id}
-	    				{...folder}
-	    			/>
-	    		))
-	    	}
+	    	<SidebarError>
+		    	{folders
+		    		.map(folder => (
+		    			<Folder
+		    				key={folder.id}
+		    				{...folder}
+		    			/>
+		    		))
+		    	}
+	    	</SidebarError>
 	    	<AddFolder />
 	    </div>
 	  );		
