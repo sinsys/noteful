@@ -1,4 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Noteful App
+ - This is a basic project exploring interacting with a local API using [React.js](https://reactjs.org/) and [Node.js](https://nodejs.org/en/)
+ - It utilizes [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start) to filter notes and provide routeful navigation.
+ - It supports Create, Read, and Delete operations.
+## Requirements
+**Noteful JSON server**
+To get your local copy of the noteful API:
+
+    git clone https://github.com/tomatau/noteful-json-server
+    cd ./noteful-json-server
+    npm install
+    npm start
+> Ctrl-c to close the server
+-   You can see documentation for the JSON-server once it's started by visiting  `http://localhost:9090`
+-   You can see all of the data currently stored in the server by visiting  `http://localhost:9090/db`.
+
+## Functionality
+This application allows you to read notes and folders from a basic local server. It allows you to create folders as well as create and delete notes.
 
 ## Available Scripts
 

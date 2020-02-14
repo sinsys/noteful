@@ -7,12 +7,19 @@ export default class AddNote extends Component {
 
 	render() {
 	  return (
-	  	<Link
-	  		to={'/add-note'}
-	  		className="AddNote"
+	  	<div
+	  		className="Notelist-header"
 	  	>
-	  		+ Add Note
-		  </Link>
+	  		<h2>
+	  			{this.props.folderName}
+	  		</h2>
+		  	<Link
+		  		to={'/add-note'}
+		  		className="AddNote"
+		  	>
+		  		+ Add Note
+			  </Link>
+	  	</div>
 	  );		
 	}
 

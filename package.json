@@ -1,5 +1,4 @@
 {
-  "homepage": "https://sinsys.github.io/noteful/",
   "name": "noteful-app",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +9,7 @@
     "date-fns": "^2.9.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "serve -s build",
+    "preserve": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,6 +41,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "serve": "^11.3.0"
   }
 }

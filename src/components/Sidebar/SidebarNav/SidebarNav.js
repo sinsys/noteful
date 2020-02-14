@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import './SidebarNav.css';
 
@@ -8,7 +9,7 @@ class SidebarNav extends Component {
 	  return (
 	  	<div
 	  		className="SidebarNav"
-	  		onClick={() => this.props.handleGoBack()}
+	  		onClick={() => this.props.history.goBack()}
 	  	>
 		    &#x25c0;&nbsp;
 		  </div>
@@ -16,5 +17,4 @@ class SidebarNav extends Component {
 	}
 }
 
-
-export default SidebarNav;
+export default withRouter(SidebarNav);

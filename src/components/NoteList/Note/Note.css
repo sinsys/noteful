@@ -1,13 +1,13 @@
 .Note {
 	margin: 0.25rem;
 	background: #DDD;
-	box-shadow: 3px 3px 5px rgba(0,0,0,1);
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
 	padding-left: 1rem;
 	border-radius: 0.5rem;
 	transition: all 0.4s ease 0s;
 	display: flex;
-	width: 100%;
 	justify-content: space-between;
+	margin-bottom: 1rem;
 }
 
 .Note a,a:visited,a:active,a:hover {
@@ -20,9 +20,14 @@
 	flex-direction: column;
 	justify-content: space-between;
 	cursor: pointer;
+	max-width: 500px;
 }
 
 p.Note-modified {
 	color: #153957;
 	font-style: italic;
+}
+
+.NoteDetails-content {
+	max-width: 960px;
 }

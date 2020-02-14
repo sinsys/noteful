@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import Folder from './Folder/Folder';
 import AddFolder from './AddFolder/AddFolder';
+import SidebarError from './SidebarError';
 import APIContext from '../../APIContext';
 
 import './Sidebar.css';
@@ -31,19 +34,29 @@ class Sidebar extends Component {
 	    			{this.context.notes.length}
 	    		</span>
 	    	</NavLink>
-	    	{folders
-	    		.map(folder => (
-	    			<Folder
-	    				key={folder.id}
-	    				{...folder}
-	    			/>
-	    		))
-	    	}
+	    	<SidebarError>
+		    	{folders
+		    		.map(folder => (
+		    			<Folder
+		    				key={folder.id}
+		    				{...folder}
+		    			/>
+		    		))
+		    	}
+	    	</SidebarError>
 	    	<AddFolder />
 	    </div>
 	  );		
 	}
 
+}
+
+Sidebar.defaultProps = {
+	folder: {}
+}
+
+Sidebar.propTypes = {
+	folder: PropTypes.object
 }
 
 export default Sidebar;

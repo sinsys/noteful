@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import { withRouter, Route, Link } from 'react-router-dom';
 import Note from './Note/Note';
 import AddNote from './AddNote/AddNote';
+import NoteListError from './NoteListError';
 import APIContext from '../../APIContext';
 
 import './NoteList.css';
 
 class NoteList extends Component {
-
-  static defaultProps = {
-    match: {
-      params: {}
-    }
-  }
 
   static contextType = APIContext;
 
@@ -22,34 +18,87 @@ class NoteList extends Component {
       : notes.filter(note => note.folderId === folderId)
   };
 
+  getFolderName = (folders=[], folderId) => {
+  	const folderMatch = folders.filter(folder => folder.id === folderId);
+  		return (folderMatch[0])
+  			? folderMatch[0].name
+  			: "All Notes"
+  }
+
+  verifyFolderExists = (folders=[], folderId) => {
+  	return (
+  		folders.some((folder => 
+  			folder.id === folderId
+  		))
+  	)
+  };
+
 	render() {
-		const { notes = [] } = this.context;
+
+		const { folders = [], notes = [] } = this.context;
 		const { folderId } = this.props.match.params;
 		const folderNotes = this.getFolderNotes(notes, folderId);
+		
 	  return (
-	    <main 
-	    	className="Main"
-	    >
-	    	<AddNote />
-      	<div
-      		className="Notes-wrapper"
-      	>
-	 	    	{folderNotes
-		    		.map(note => (
-		    			<Note
-		    				{...note}
-		    				key={note.id}
-		    			/>
-		    		))
-		    	}
-        </div>
-	    </main>
+      <Route 
+        key='/'
+        path='/' 
+        render={routeProps => {
+          return (
+						<main 
+							className="Main"
+						>
+							<NoteListError>
+								{(this.props.folderId === "undefined" || this.verifyFolderExists(folders, this.props.folderId))
+								  ?	<>
+											<AddNote 
+										  	folderName={this.getFolderName(folders, folderId)}
+										  />
+											<div
+												className="Notes-wrapper"
+											>
+											{folderNotes
+											  .map(note => (
+											  	<Note
+											  		{...note}
+											  		key={note.id}
+											  	/>
+											  ))
+											}
+										  </div>
+								  	</>
+								  : <div
+				    					className="empty"
+				    				>
+				    					<p>
+				    						I'm sorry, this folder does not exist.
+				    					</p>
+				    					<Link
+				    						to='/'
+				    					>
+				    						Home
+				    					</Link>
+				    				</div>
+								}
+							</NoteListError>
+						</main>
+
+          )
+        }}
+      />
 	  );		
 	}
 
 }
 
-export default NoteList;
+export default withRouter(NoteList);
 
+NoteList.defaultProps = {
+	folderId: 'undefined',
+	folderNotes: []
+}
 
-
+NoteList.propTypes = {
+	folderId: PropTypes.string.isRequired,
+	folderNotes: PropTypes.array.isRequired
+}

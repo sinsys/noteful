@@ -3,7 +3,8 @@
 	flex-direction: column;
 	padding: 1rem;
 	flex-basis: 1;
-	min-width: 200px;
+	min-width: 250px;
+	max-width: 250px;
 	background: #153957;
 }
 
