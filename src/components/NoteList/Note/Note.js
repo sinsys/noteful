@@ -67,7 +67,7 @@ export default class Note extends Component {
 	    	</div>
 	    	<DeleteNote 
 	    		id={this.props.id}
-	    		folderId={this.props.folderId}
+	    		folder={this.props.folder}
 	    		onDeleteNote={this.props.onDeleteNote}
 	    		history={this.props.history}
 	    	/>

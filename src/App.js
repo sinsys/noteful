@@ -7,6 +7,8 @@ import NoteList from './components/NoteList/NoteList';
 import NoteDetails from './components/NoteDetails/NoteDetails';
 import AddFolderForm from './components/Forms/AddFolderForm/AddFolderForm';
 import AddNoteForm from './components/Forms/AddNoteForm/AddNoteForm';
+import EditNoteForm from './components/Forms/EditNoteForm/EditNoteForm';
+import EditFolderForm from './components/Forms/EditFolderForm/EditFolderForm';
 import SidebarNav from './components/Sidebar/SidebarNav/SidebarNav';
 
 import './App.css';
@@ -60,6 +62,7 @@ export default class App extends Component {
         render={routeProps => {
           const {noteId} = routeProps.match.params;
           const note = this.getNote(notes, noteId) || {};
+          console.log(note);
           return (
             <div
               className="Sidebar-NoteList_wrapper"
@@ -80,8 +83,8 @@ export default class App extends Component {
     // Form routes
     routes.push(
       <Route 
-        key="/add-folder"
-        path="/add-folder" 
+        key="/add/folder"
+        path="/add/folder" 
         render={routeProps => {
           return (
             <div
@@ -96,8 +99,8 @@ export default class App extends Component {
         }}
       />,
       <Route 
-        key="/add-note"
-        path="/add-note" 
+        key="/add/note"
+        path="/add/note" 
         render={routeProps => {
           return (
             <div
@@ -111,6 +114,49 @@ export default class App extends Component {
           )
         }}
       />,
+      <Route 
+        key="/edit/note/:noteId"
+        path="/edit/note/:noteId" 
+        render={routeProps => {
+          
+          const {noteId} = routeProps.match.params;
+          const note = this.getNote(notes, noteId) || {};
+          return (
+            <div
+              className="Sidebar-NoteList_wrapper"
+            >
+              <Sidebar
+                key={"Sidebar"}
+              />
+              <EditNoteForm 
+                {...note}
+              />
+            </div>
+          )
+        }}
+      />,
+      <Route 
+        key="/edit/folder/:folderId"
+        path="/edit/folder/:folderId" 
+        render={routeProps => {
+          
+          const {noteId} = routeProps.match.params;
+          const folder = this.getNote(notes, noteId);
+          
+          return (
+            <div
+              className="Sidebar-NoteList_wrapper"
+            >
+              <Sidebar
+                key={"Sidebar"}
+              />
+              <EditFolderForm 
+                {...folder}
+              />
+            </div>
+          )
+        }}
+      />,
     );
     
     return (
@@ -120,7 +166,7 @@ export default class App extends Component {
 
   getNote = (notes=[], noteId) => {
     return (
-      notes.find(note => note.id === noteId)
+      notes.find(note => note.id === parseInt(noteId))
     );
   };
 

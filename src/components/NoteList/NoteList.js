@@ -15,11 +15,11 @@ class NoteList extends Component {
   getFolderNotes = (notes=[], folderId) => {
     return (!folderId)
       ? notes
-      : notes.filter(note => note.folderId === folderId)
+      : notes.filter(note => note.folder === parseInt(folderId));
   };
 
   getFolderName = (folders=[], folderId) => {
-  	const folderMatch = folders.filter(folder => folder.id === folderId);
+  	const folderMatch = folders.filter(folder => folder.id === parseInt(folderId));
   		return (folderMatch[0])
   			? folderMatch[0].name
   			: "All Notes"
@@ -28,7 +28,7 @@ class NoteList extends Component {
   verifyFolderExists = (folders=[], folderId) => {
   	return (
   		folders.some((folder => 
-  			folder.id === folderId
+  			folder.id === parseInt(folderId)
   		))
   	)
   };
@@ -38,7 +38,7 @@ class NoteList extends Component {
 		const { folders = [], notes = [] } = this.context;
 		const { folderId } = this.props.match.params;
 		const folderNotes = this.getFolderNotes(notes, folderId);
-		
+    
 	  return (
       <Route 
         key='/'

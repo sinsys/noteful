@@ -19,7 +19,7 @@ class DeleteNote extends Component {
   handleClickDelete = e => {
     e.preventDefault();
     const noteId = this.props.id;
-    const folderId = this.props.folderId;
+    const folder = this.props.folder;
 
     fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
@@ -30,11 +30,10 @@ class DeleteNote extends Component {
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
-        return res.json()
       })
       .then(() => {
         this.context.deleteNote(noteId);
-        this.props.history.push(`/folder/${folderId}`);
+        this.props.history.push(`/folder/${folder}`);
       })
       .catch(error => {
         console.error({ error })

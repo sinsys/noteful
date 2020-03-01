@@ -41,7 +41,7 @@ class NoteDetails extends Component {
 				    	</div>
 	  		    	<DeleteNote 
 	  		    		id={this.props.id}
-				    		folderId={this.props.folderId}
+				    		folder={this.props.folder}
 				    		history={this.props.history}
 				    	/>
 			    	</>
@@ -53,7 +53,7 @@ class NoteDetails extends Component {
 }
 
 NoteDetails.defaultProps = {
-	id: '',
+	id: 0,
 	content: '',
 	folderId: '',
 	modified: '',

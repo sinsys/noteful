@@ -14,7 +14,7 @@ export default class AddNote extends Component {
 	  			{this.props.folderName}
 	  		</h2>
 		  	<Link
-		  		to={'/add-note'}
+		  		to={'/add/note'}
 		  		className="AddNote"
 		  	>
 		  		+ Add Note

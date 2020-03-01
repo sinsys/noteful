@@ -8,7 +8,7 @@ export default class AddFolder extends Component {
 	render() {
 	  return (
 	  	<Link
-	  		to={'/add-folder'}
+	  		to={'/add/folder'}
 	  		className="AddFolder"
 	  	>
 		    + Add Folder

@@ -12,7 +12,7 @@ export default class Folder extends Component {
 
   countFolderNotes = (notes=[], folderId) => {
     return notes.filter(note => 
-    	note.folderId === folderId
+    	note.folder === folderId
     ).length;
   }
 

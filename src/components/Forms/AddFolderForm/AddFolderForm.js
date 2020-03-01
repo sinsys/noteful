@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { withRouter } from 'react-router-dom';
 import ValidationError from '../ValidationError';
 
 import APIContext from '../../../APIContext'
@@ -52,6 +52,7 @@ class AddFolderForm extends Component {
         return res.json()
       })
       .then(folder => {
+        console.log(folder);
         this.context.addFolder(folder)
         this.props.history.push(`/folder/${folder.id}`)
       })
@@ -119,4 +120,4 @@ AddFolderForm.defaultProps = {
   }
 }
 
-export default AddFolderForm;
+export default withRouter(AddFolderForm);
