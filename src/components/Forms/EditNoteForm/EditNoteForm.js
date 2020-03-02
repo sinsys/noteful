@@ -43,10 +43,11 @@ class EditNoteForm extends Component {
     })
   };
 
-  updateFolderId = (folderId) => {
+  updateFolderId = (folderId, select) => {
     this.setState({
       folderId: {
-        value: folderId
+        value: folderId,
+        touched: true
       }
     })
   };
@@ -90,24 +91,21 @@ class EditNoteForm extends Component {
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
-        return res.json()
       })
-      .then(note => {
-        this.context.addNote(note)
-        this.props.history.push(`/folder/${note.folder}`)
+      .then(() => {
+        updatedNote.id = this.props.id;
+        this.context.editNote(updatedNote);
+        // this.props.history.push(`/folder/${updatedNote.folder}`);
+        this.props.history.push('/');
       })
       .catch(error => {
         console.error({ error })
       })
   }
 
-  componentDidMount() {
-    this.updateFolderId(this.props.folder);
-  };
-
   render() {
     const { folders=[] } = this.context;
-    const renderFolders = folders.map(folder =>
+    const renderOptions = folders.map(folder =>
       <option 
         key={folder.id} 
         value={folder.id}
@@ -115,7 +113,7 @@ class EditNoteForm extends Component {
         {folder.name}
       </option>
     );
-    const folderId = this.props.folder;
+    
     return (
       <main 
         className="Main"
@@ -186,8 +184,12 @@ class EditNoteForm extends Component {
               <select 
                 id='note-folder-select' 
                 name='note-folder-id'
-                defaultValue={this.props.folder}
-                onChange={e => this.updateFolderId(e.target.value)}
+                value={
+                  (this.state.folderId.value === "")
+                    ? this.props.folder
+                    : this.state.folderId.value
+                }
+                onChange={e => this.updateFolderId(e.target.value, e.target)}
               >
                 <option
                   key="no-folder-option"
@@ -195,7 +197,7 @@ class EditNoteForm extends Component {
                 >
                   ...Select a folder...
                 </option>
-                {renderFolders}
+                {renderOptions}
               </select>
             </div>
             <div 

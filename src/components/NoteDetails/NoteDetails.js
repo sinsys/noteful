@@ -44,6 +44,11 @@ class NoteDetails extends Component {
 				    		folder={this.props.folder}
 				    		history={this.props.history}
 				    	/>
+              <Link 
+                to={`/edit/note/` + this.props.id} 
+              >
+                Edit
+              </Link>
 			    	</>
     		}
 	    </main>
@@ -64,7 +69,7 @@ NoteDetails.defaultProps = {
 }
 
 NoteDetails.propTypes = {
-	id: PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
 	content: PropTypes.string.isRequired,
 	folderId: PropTypes.string.isRequired,
 	modified: PropTypes.string.isRequired,

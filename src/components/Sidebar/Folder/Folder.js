@@ -15,8 +15,9 @@ export default class Folder extends Component {
     	note.folder === folderId
     ).length;
   }
-
+  
 	render() {
+    const noteCount = this.countFolderNotes(this.context.notes, this.props.id);
 	  return (
     	<NavLink
     		to={'/folder/' + this.props.id}
@@ -28,7 +29,7 @@ export default class Folder extends Component {
     		<span
     			className="Notes-count"
     		>
-    			{this.countFolderNotes(this.context.notes, this.props.id)}
+    			{noteCount}
     		</span>
     	</NavLink>
 	  );		

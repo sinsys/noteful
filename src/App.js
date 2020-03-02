@@ -24,7 +24,7 @@ export default class App extends Component {
   };
 
   makeRoutes = () => {
-    const {notes} = this.state;
+    const {notes, folders} = this.state;
     const routes = [];
 
     // Root and Folder Routes
@@ -62,7 +62,6 @@ export default class App extends Component {
         render={routeProps => {
           const {noteId} = routeProps.match.params;
           const note = this.getNote(notes, noteId) || {};
-          console.log(note);
           return (
             <div
               className="Sidebar-NoteList_wrapper"
@@ -140,8 +139,8 @@ export default class App extends Component {
         path="/edit/folder/:folderId" 
         render={routeProps => {
           
-          const {noteId} = routeProps.match.params;
-          const folder = this.getNote(notes, noteId);
+          const {folderId} = routeProps.match.params;
+          const folder = this.getFolder(folders, folderId) || {};
           
           return (
             <div
@@ -196,6 +195,21 @@ export default class App extends Component {
     })
   };
 
+  handleEditNote = note => {
+    let tempNotes = this.state.notes;
+    const noteIndex = tempNotes.findIndex(i => {
+      return (
+        note.id === i.id
+      );
+    });
+    tempNotes[noteIndex] = note;
+    console.log(this.state.notes);
+    console.log(tempNotes);
+    this.setState({
+      notes: tempNotes
+    });
+  };
+
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/notes`),
@@ -230,6 +244,7 @@ export default class App extends Component {
           notes,
           folders
         })
+
       })
       .catch(err => {
         console.log(err);
@@ -242,8 +257,10 @@ export default class App extends Component {
       folders: this.state.folders,
       addFolder: this.handleAddFolder,
       addNote: this.handleAddNote,
-      deleteNote: this.handleDeleteNote
+      deleteNote: this.handleDeleteNote,
+      editNote: this.handleEditNote
     }
+
     return (
       <APIContext.Provider 
         value={contextValue}

@@ -38,7 +38,7 @@ class NoteList extends Component {
 		const { folders = [], notes = [] } = this.context;
 		const { folderId } = this.props.match.params;
 		const folderNotes = this.getFolderNotes(notes, folderId);
-    
+    console.log(folderNotes);
 	  return (
       <Route 
         key='/'
