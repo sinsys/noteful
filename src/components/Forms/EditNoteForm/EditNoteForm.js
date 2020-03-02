@@ -53,6 +53,9 @@ class EditNoteForm extends Component {
   };
 
   validateName(fieldValue) {
+    if(this.props.name){
+      
+    }
     const name = this.state.name.value.trim();
     if (name.length === 0) {
       return 'Name is required';
@@ -177,9 +180,12 @@ class EditNoteForm extends Component {
                 htmlFor='note-folder-select'
               >
                 Folder
-                <ValidationError 
-                  message={this.validateFolderId()} 
-                />
+                {this.state.folderId.touched && (
+                  <ValidationError 
+                    message={this.validateFolderId()} 
+                  />
+                )}
+
               </label>
               <select 
                 id='note-folder-select' 
@@ -205,11 +211,11 @@ class EditNoteForm extends Component {
             >
               <button 
                 type='submit'
-                disabled={
-                  this.validateName() ||
-                  this.validateContent() ||
-                  this.validateFolderId()
-                }
+                // disabled={
+                //   this.validateName() ||
+                //   this.validateContent() ||
+                //   this.validateFolderId()
+                // }
               >
                 Add note
               </button>
