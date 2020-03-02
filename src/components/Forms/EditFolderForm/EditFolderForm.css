@@ -1,0 +1,7 @@
+.buttons button {
+  max-width: 400px;
+}
+
+.buttons button.delete-btn:hover {
+  background: #bb0000;
+}

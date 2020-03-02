@@ -1,0 +1,36 @@
+
+
+.EditNote {
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #BBB;
+	border-radius: 5px;
+	padding: 1rem 0;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+	font-size: 1rem;
+	text-align: center;
+	width: 250px;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.EditNote:hover{
+	width: 250px;
+	background: rgb(201, 163, 38);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+}
+
+a.EditNote,
+a.EditNote:visited,
+a.EditNote:active,
+a.EditNote:hover {
+	color: #FEFEFE;
+	text-decoration: none;
+	font-weight: bold;
+}

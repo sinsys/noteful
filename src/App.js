@@ -169,6 +169,12 @@ export default class App extends Component {
     );
   };
 
+  getFolder = (folders=[], folderId) => {
+    return (
+      folders.find(folder => folder.id === parseInt(folderId))
+    );
+  };
+
   handleDeleteNote = noteId => {
     this.setState({
       notes: this.state.notes.filter(note => {
@@ -176,6 +182,17 @@ export default class App extends Component {
       })
     })
   };
+
+  handleDeleteFolder = folderId => {
+    this.setState({
+      notes: this.state.notes.filter(note => {
+        return note.folder !== folderId
+      }),
+      folders: this.state.folders.filter(folder => {
+        return folder.id !== folderId
+      })
+    });
+  }
 
   handleAddFolder = folder => {
     this.setState({
@@ -203,10 +220,21 @@ export default class App extends Component {
       );
     });
     tempNotes[noteIndex] = note;
-    console.log(this.state.notes);
-    console.log(tempNotes);
     this.setState({
       notes: tempNotes
+    });
+  };
+
+  handleEditFolder = folder => {
+    let tempFolders = this.state.folders;
+    const folderIndex = tempFolders.findIndex(i => {
+      return (
+        folder.id === i.id
+      );
+    });
+    tempFolders[folderIndex] = folder;
+    this.setState({
+      folders: tempFolders
     });
   };
 
@@ -258,7 +286,9 @@ export default class App extends Component {
       addFolder: this.handleAddFolder,
       addNote: this.handleAddNote,
       deleteNote: this.handleDeleteNote,
-      editNote: this.handleEditNote
+      deleteFolder: this.handleDeleteFolder,
+      editNote: this.handleEditNote,
+      editFolder: this.handleEditFolder
     }
 
     return (

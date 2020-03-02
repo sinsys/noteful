@@ -81,8 +81,7 @@ class EditNoteForm extends Component {
     const updatedNote = {
       name: e.target['note-name'].value,
       content: e.target['note-content'].value,
-      folder: e.target['note-folder-id'].value,
-      modified: new Date(),
+      folder: e.target['note-folder-id'].value
     }
     fetch(`${config.API_ENDPOINT}/notes/${this.props.id}`, {
       method: 'PATCH',
@@ -94,12 +93,14 @@ class EditNoteForm extends Component {
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
+        return (
+          res.json()
+        )
       })
-      .then(() => {
+      .then((note) => {
         updatedNote.id = this.props.id;
-        this.context.editNote(updatedNote);
-        // this.props.history.push(`/folder/${updatedNote.folder}`);
-        this.props.history.push('/');
+        this.context.editNote(note);
+        this.props.history.push(`/folder/${note.folder}`);
       })
       .catch(error => {
         console.error({ error })
@@ -217,7 +218,7 @@ class EditNoteForm extends Component {
                 //   this.validateFolderId()
                 // }
               >
-                Add note
+                Edit Note
               </button>
             </div>
           </form>

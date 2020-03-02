@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import EditFolder from '../EditFolder/EditFolder';
+
 import './AddNote.css';
 
 export default class AddNote extends Component {
@@ -12,6 +14,14 @@ export default class AddNote extends Component {
 	  	>
 	  		<h2>
 	  			{this.props.folderName}
+          {(this.props.folder)
+            ? (
+                <EditFolder
+                  folder={this.props.folder}
+                />
+              )
+            : ""
+          }
 	  		</h2>
 		  	<Link
 		  		to={'/add/note'}

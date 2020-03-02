@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import DeleteNote from '../NoteList/Note/DeleteNote/DeleteNote';
+import EditNote from './EditNote/EditNote';
 
 import './NoteDetails.css';
 
@@ -39,16 +40,19 @@ class NoteDetails extends Component {
 					        )}
 					      </div>
 				    	</div>
-	  		    	<DeleteNote 
-	  		    		id={this.props.id}
-				    		folder={this.props.folder}
-				    		history={this.props.history}
-				    	/>
-              <Link 
-                to={`/edit/note/` + this.props.id} 
+              <div
+                className="button-wrapper"
               >
-                Edit
-              </Link>
+                <DeleteNote 
+                  id={this.props.id}
+                  folder={this.props.folder}
+                  history={this.props.history}
+                />
+                <EditNote 
+                  id={this.props.id}
+                />
+              </div>
+
 			    	</>
     		}
 	    </main>

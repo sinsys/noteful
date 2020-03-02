@@ -52,7 +52,6 @@ class AddFolderForm extends Component {
         return res.json()
       })
       .then(folder => {
-        console.log(folder);
         this.context.addFolder(folder)
         this.props.history.push(`/folder/${folder.id}`)
       })
